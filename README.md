@@ -11,7 +11,7 @@ Simple notification badge react component this is an forked version of react-not
 ## Installation
 
 ```bash
-npm install --save react-notification-badge
+npm install --save @parthamk/notification-badge
 ```
 
 ## API
@@ -61,8 +61,8 @@ NotificationBadge.propTypes = {
 ## Usage example
 
 ```javascript
-import NotificationBadge from "react-notification-badge";
-import { Effect } from "react-notification-badge";
+import NotificationBadge from "@parthamk/notification-badge";
+import { Effect } from "@parthamk/notification-badge";
 
 <div style={container}>
   <NotificationBadge count={this.state.count} effect={Effect.SCALE} />
