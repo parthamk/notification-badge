@@ -1,4 +1,4 @@
-# react-notification-badge 
+# notification-badge 
 
 Simple notification badge react component this is an forked version of react-notification-badge and I have updated the dependency
 
@@ -88,4 +88,4 @@ Use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates)
 
 ## License
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmobilusoss%2Freact-notification-badge.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmobilusoss%2Freact-notification-badge?ref=badge_large)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
