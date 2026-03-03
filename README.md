@@ -1,91 +1,142 @@
-# notification-badge 
+# @parthamk/notification-badge
 
-Simple notification badge react component this is an forked version of react-notification-badge and I have updated the dependency
+A simple, modern, and animated notification badge React component. 
 
-[![Gyazo](http://i.gyazo.com/70028f7eb324a89fb130401774e8a159.gif)](http://gyazo.com/70028f7eb324a89fb130401774e8a159)
+*This is a completely modernized fork of `react-notification-badge`, explicitly rewritten to support **React 18+**, **Vite** tooling, and modern React Functional Components.*
 
-## Demo
+[![npm version](https://badge.fury.io/js/%40parthamk%2Fnotification-badge.svg)](https://badge.fury.io/js/%40parthamk%2Fnotification-badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
-[View Demo](http://mobilusoss.github.io/react-notification-badge/example/)
+---
 
-## Installation
+## 🚀 What's New in this Fork? (Modernization)
+
+The original repository relied on deprecated patterns and very old build systems. This version brings it fully into the modern React ecosystem:
+
+- **React 18+ Ready**: Migrated entirely from Class Components to **Functional Components** using Hooks (`useEffect`, `useRef`).
+- **No Deprecation Warnings**: Completely removed legacy `ReactDOM.findDOMNode` and `String Refs`, ensuring full compatibility with **React Strict Mode**.
+- **Modern Build System**: Replaced outdated tools (Browserify, Karma, Babelify) with **Vite 5**. The library now natively exports both **ES Modules (ESM)** and **CommonJS (CJS)** bundles for seamless consumption in Vite, Next.js, Create React App, and Webpack.
+- **Modern Testing**: Test suite overhauled to use **Vitest** and **React Testing Library**.
+- **Zero Vulnerabilities**: Dropped all ancient dependencies to ensure a clean, secure dependency tree.
+
+---
+
+## 📦 Installation
+
+Install the package from npm:
 
 ```bash
-npm install --save @parthamk/notification-badge
+npm install @parthamk/notification-badge
+# or
+yarn add @parthamk/notification-badge
 ```
 
-## API
+*Note: `react` and `react-dom` (v18.0.0+) are required peer dependencies.*
 
-### `NotificationBadge`
+---
 
-#### Props
+## 🛠 Usage Example
 
-```javascript
-NotificationBadge.propTypes = {
-  count: React.PropTypes.number,
-  label: React.PropTypes.string,
-  containerStyle: React.PropTypes.object,
-  style: React.PropTypes.object,
-  className: React.PropTypes.string,
-  effect: React.PropTypes.array,
-  duration: React.PropTypes.number,
+Here is a practical example of how to use the badge in a modern React application.
+
+```jsx
+import React, { useState } from 'react';
+import NotificationBadge, { Effect } from '@parthamk/notification-badge';
+
+const App = () => {
+  const [messages, setMessages] = useState(0);
+
+  const containerStyle = {
+    position: 'relative',
+    display: 'inline-block',
+    padding: '10px 20px',
+    backgroundColor: '#333',
+    color: '#fff',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontFamily: 'sans-serif'
+  };
+
+  return (
+    <div style={{ padding: '40px' }}>
+      <div style={containerStyle} onClick={() => setMessages(messages + 1)}>
+        Inbox
+        <NotificationBadge 
+          count={messages} 
+          effect={Effect.SCALE} 
+          style={{ top: '-10px', right: '-10px' }}
+        />
+      </div>
+      
+      <div style={{ marginTop: '20px' }}>
+        <button onClick={() => setMessages(0)}>Clear Messages</button>
+      </div>
+    </div>
+  );
 };
+
+export default App;
 ```
 
-- `count`: Badge count, if `count < 1`, badge will not shown.
+---
 
-- `label`: Badge label will be rendered instead of count.
+## ⚙️ API Reference
 
-- `containerStyle`: custom style of container
+### `<NotificationBadge />` Props
 
-- `style`: custom style of badge
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`count`** | `number` | `0` | Badge count. If `count < 1`, the badge will not be rendered. |
+| **`label`** | `string` | `null` | A string label to render instead of the numerical count. |
+| **`containerStyle`** | `object` | `{}` | Custom inline styles applied to the outer container. |
+| **`style`** | `object` | `{}` | Custom inline styles applied directly to the inner badge element. |
+| **`className`** | `string` | `undefined`| CSS class name applied to the badge element. |
+| **`effect`** | `array` | `Effect.SCALE`| The animation effect array to apply upon count updates. |
+| **`frameLength`**| `number` | `30.0` | Frame length for the animation (default is 30 frames, i.e., ~0.5s at 60fps). |
 
-- `className`: className of badge
+#### Effects Array Structure
+The `effect` prop accepts an array in the format `[string, string, object, object]`:
+- `effect[0]`: Applied to `transform` on the first frame.
+- `effect[1]`: Applied to `transform` on `frameLength`.
+- `effect[2]`: Applied as inline styles on the first frame.
+- `effect[3]`: Applied as inline styles on `frameLength`.
 
-- `effect`: effect of notification.
-  effect array should be `[string, string, object, object]`.
-
-  `effect[0]` will be applied to `transform` on first frame.
-  `effect[1]` will be applied to `transform` on `frameLength`.
-  `effect[2]` will be applied as `style[key] = value` on first frame.
-  `effect[3]` will be applied to `style[key] = value` on `frameLength`.
-
-  Pre defined effect is available as
-
-  - `Effect.ROTATE_X`
-  - `Effect.ROTATE_Y`
-  - `Effect.SCALE`
-
-- `frameLength`: Frame length for `effect[1]` and `effect[3]` (default 30.0, 60.0fps/30.0 = 0.5 second)
-
-## Usage example
+### Pre-defined Effects
+Import the `Effect` object for ready-to-use animations:
 
 ```javascript
-import NotificationBadge from "@parthamk/notification-badge";
-import { Effect } from "@parthamk/notification-badge";
+import { Effect } from '@parthamk/notification-badge';
 
-<div style={container}>
-  <NotificationBadge count={this.state.count} effect={Effect.SCALE} />
-</div>;
+// Available effects:
+Effect.ROTATE_X
+Effect.ROTATE_Y
+Effect.SCALE
 ```
 
-See [example](https://github.com/mobilusoss/react-notification-badge/tree/develop/example)
+---
 
-```bash
-npm install
-npm run start:example
-```
+## 💻 Local Development
 
-## Tests
+If you wish to contribute or run the example locally:
 
-```bash
-npm test
-```
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the local Vite development server for the interactive example:
+   ```bash
+   npm run dev:example
+   ```
+4. Run tests using Vitest:
+   ```bash
+   npm run test
+   ```
+5. Build the library:
+   ```bash
+   npm run build
+   ```
 
-## Update dependencies
+## 📜 License
 
-Use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates)
-
-## License
-
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+MIT
