@@ -1,6 +1,6 @@
 {
   "name": "@parthamk/notification-badge",
-  "version": "1.5.5",
+  "version": "2.0.0",
   "description": "Simple notification badge react component this is an forked version of react-notification-badge and I have updated the dependency",
   "type": "module",
   "main": "./dist/notification-badge.cjs",
@@ -11,15 +11,21 @@
       "require": "./dist/notification-badge.cjs"
     }
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "vite",
     "dev:example": "vite serve example",
     "build": "vite build",
+    "build:example": "vite build -c vite.example.config.js",
     "test": "vitest run"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/parthamk/notification-badge"
+    "url": "git+https://github.com/parthamk/notification-badge.git"
   },
   "keywords": [
     "react",
