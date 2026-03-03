@@ -7,6 +7,10 @@ A simple, modern, and animated notification badge React component.
 [![npm version](https://badge.fury.io/js/%40parthamk%2Fnotification-badge.svg)](https://badge.fury.io/js/%40parthamk%2Fnotification-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
+## 🎥 Demo
+
+<video src="./assets/demo.webm" width="600" controls autoplay loop muted></video>
+
 ---
 
 ## 🚀 What's New in this Fork? (Modernization)
