@@ -20,7 +20,6 @@
     "dev": "vite",
     "dev:example": "vite serve example",
     "build": "vite build",
-    "build:example": "vite build -c vite.example.config.js",
     "test": "vitest run"
   },
   "repository": {
