@@ -1,6 +1,6 @@
 {
   "name": "@parthamk/notification-badge",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple notification badge react component this is an forked version of react-notification-badge and I have updated the dependency",
   "type": "module",
   "main": "./dist/notification-badge.cjs",
